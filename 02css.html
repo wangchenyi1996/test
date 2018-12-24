@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>圣杯布局</title>
+</head>
+<!-- 圣杯布局缺点是：1. 结构不正确 2. 多了一层标签 
+<style>
+.wrapper{
+    overflow: hidden;  //清除浮动
+}
+.middle{
+    width: 100%;
+    float: left;
+}
+.middle .main{
+    margin: 0 220px;
+    background: red;
+}
+.left{
+    width: 200px;
+    height: 300px;
+    float: left;
+    background: green;
+    margin-left: -100%;
+}
+.right{
+    width: 200px;
+    height: 300px;
+    float: left;
+    background: yellow;
+    margin-left: -200px;
+}
+</style>
+
+-->
+<style>
+.wrapper{
+    overflow: hidden;  //清除浮动
+}
+.middle{
+    width: 100%;
+    float: left;
+}
+.middle .main{
+    margin: 0 220px;
+    background: red;
+}
+.left{
+    width: 200px;
+    height: 300px;
+    float: left;
+    background: green;
+    margin-left: -100%;
+}
+.right{
+    width: 200px;
+    height: 300px;
+    float: left;
+    background: yellow;
+    margin-left: -200px;
+}
+</style>
+<body>
+	<div class="wrapper">
+	    <div class="middle">
+	        <div class="main">中间</div>
+	    </div>
+
+	    <div class="left">
+	        左栏
+	    </div>
+
+	    <div class="right">
+	        右栏
+	    </div>
+	</div>
+</body>
+</html>

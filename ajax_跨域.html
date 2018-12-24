@@ -1,0 +1,148 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	/*div水平垂直居中的几种方法 */
+	/* div.parent{
+		width: 100px;
+		height: 100px;
+		background-color: #f60;
+		display: flex;
+		align-items: center;
+		justify-content:center; 
+	}
+	div.child{
+		width: 30px;
+		height: 30px;
+		background-color: #369;
+	} */
+
+	/* div.parent{
+		width: 100px;
+		height: 100px;
+		background-color: #f60;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-left:-50px; 
+		margin-top: -50px;  
+		
+	
+	}
+	div.child{
+		width: 30px;
+		height: 30px;
+		background-color: #369;
+	} 
+	 */
+
+	/*  div.parent{
+			width: 100px;
+			height: 100px;
+			background-color: #f60;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			
+			margin: auto;  
+			
+	
+		}
+		div.child{
+			width: 30px;
+			height: 30px;
+			background-color: #369;
+		}  */
+	
+	div.parent{
+		width: 100px;
+		height: 100px;
+		background-color: #f60;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50px,-50px);
+		
+
+	}
+	div.child{
+		width: 30px;
+		height: 30px;
+		background-color: #369;
+	} 
+
+
+</style>
+<body>
+
+	div水平垂直居中的几种方法
+	<div class="parent">
+		<div class="child"></div>
+	</div>
+
+	
+</body>
+</html> -->
+
+
+
+	<!-- 原生js解决跨域 -->
+
+     <script type="text/javascript">
+    // 得到航班信息查询结果后的回调函数
+    var flightHandler = function(data){
+        alert('你查询的航班结果是：票价 ' + data.price + ' 元，' + '余票 ' + data.tickets + ' 张。');
+    };
+    // 提供jsonp服务的url地址（不管是什么类型的地址，最终生成的返回值都是一段javascript代码）
+    var url = "http://flightQuery.com/jsonp/flightResult.aspx?code=CA1998&callback=flightHandler";
+    // 创建script标签，设置其属性
+    var script = document.createElement('script');
+    script.setAttribute('src', url);
+    // 把script标签加入head，此时调用开始
+    document.getElementsByTagName('head')[0].appendChild(script); 
+
+
+    flightHandler({
+	    "code": "CA1998",
+	    "price": 1780,
+	    "tickets": 5
+	});
+    </script>
+<script src="jquery/jquery-3.3.1.js"></script>
+	<!-- jquery封装ajax -->
+	 <script type="text/javascript">
+    	 $(function(){ 
+       	  $.ajax({
+             type: "get",
+             async: false,
+             url: "http://flightQuery.com/jsonp/flightResult.aspx?code=CA1998",
+             dataType: "jsonp",
+             jsonp: "callback",//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(一般默认为:callback)
+             jsonpCallback:"flightHandler",//自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名，也可以写"?"，jQuery会自动为你处理数据
+             success: function(json){
+                 alert('您查询到航班信息：票价： ' + json.price + ' 元，余票： ' + json.tickets + ' 张。');
+             },
+             error: function(){
+                 alert('fail');
+             }
+         });
+     });
+     </script>
+
+
+
+
+
+
+
+
+
