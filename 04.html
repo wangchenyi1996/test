@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .message{
+        width: 100px;
+        height: 100px;
+        background-color: #ff6600;
+    }
+    .message2{
+          width: 120px;
+          height: 120px;
+          background-color: #369;
+      }
+    .message3{
+        width: 50px;
+        height: 50px;
+        background-color: #ffff00;
+    }
+    .fs{
+        color: #31b0d5;
+        font-size: 30px;
+    }
+</style>
+<body>
+<div id="box">
+    <p id="p1">hello123</p>
+
+    <p id="p2">world123</p>
+</div>
+<!--<script>
+//直接在指定元素后面插入
+    var newElement = document.createElement('div');
+    newElement.className = 'message';
+    var textNode = document.createTextNode('Hello JavaScript');
+    newElement.appendChild(textNode);
+    var alertBox = document.querySelector('.alert');
+    alertBox.appendChild(newElement)
+</script>-->
+
+<script>
+    var box=document.getElementById('box');
+    var p1=document.getElementById('p1')
+    var p2=document.getElementById('p2')
+/*    var box2=document.createElement('div');
+    box2.setAttribute('class','message');
+    var textNode=document.createTextNode('我是谁！');
+    box2.appendChild(textNode);
+    box.appendChild(box2);*/
+
+/*
+    //在指定元素前面插入
+    var box3=document.createElement('div');
+    box3.setAttribute('class','message2');
+    var textNode2=document.createTextNode('123456789');
+    box3.appendChild(textNode2);
+    box.insertBefore(box3,p1)*/
+
+
+    /*
+    //在指定元素后面插入
+    var box4=document.createElement('div');
+    box4.setAttribute('class','message3');
+    var textNode3=document.createTextNode('123456789abc');
+    box4.appendChild(textNode3);
+    if(p1.lastElementChild==p1){
+        box.appendChild(box4);
+    }else{
+        box.insertBefore(box4,p1.nextElementSibling)
+    }*/
+
+    //替换指定元素    现在想替换id为p2的p元素
+    var p3=document.createElement('p');
+    p3.className='fs';
+    var textNode4=document.createTextNode('你好吗123？');
+    p3.appendChild(textNode4);
+    box.replaceChild(p3,p2);
+
+</script>
+</body>
+</html>
