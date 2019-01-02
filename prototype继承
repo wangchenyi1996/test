@@ -25,3 +25,32 @@
     s.display();//undefined-undefined-06281097   
     //student的name、age没有从参数中获得（两个属性要在person的构造行数中获得，但是prototype的构造函数无参）  
 <script>  
+
+
+<script type="text/javascript">  
+    //person类  
+    function person(name, age) {  
+        this.name = name;  
+        this.age = age;  
+    }  
+    person.prototype.say = function() {//为person类添加say方法  
+        document.write("I am a person");  
+    };  
+    person.prototype.display = function() {//为person类添加display方法  
+        document.write(this.name + "-" + this.age);  
+    };  
+      
+    //student类  
+    function student(name, age, no) {  
+        person.call(this,name,age);//可以获得父类构造方法(this.name=name;this.age=age;)  
+        this.no = no;  
+    }  
+    student.prototype = new person();//没有此句，student类无法获得person的say/display方法  
+    student.prototype.display = function() {//为student类添加display方法，并覆盖了父类的方法  
+        document.write(this.name + "-" + this.age + "-" + this.no);  
+    };  
+  
+    var s = new student("captain", 21, "06281097");  
+    s.say();//I am a person  
+    s.display();//captain-21-06281097   
+<script>  
