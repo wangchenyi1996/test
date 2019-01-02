@@ -1,0 +1,27 @@
+<script type="text/javascript">  
+    //person类  
+    function person(name, age) {  
+        this.name = name;  
+        this.age = age;  
+        this.say = function() {  
+            document.write("I am a person");  
+        }  
+        this.display = function() {  
+            document.write(this.name + "-" + this.age);  
+        }  
+    }  
+    //student类  
+    function student(name, age, no) {  
+        this.no = no;  
+        this.display = function() {//覆盖了父类的方法  
+            document.write(this.name + "-" + this.age + "-" + this.no);  
+        }  
+    }  
+    student.prototype = new person();//student继承person（无法写带参构造函数）  
+    //student.prototype = new person("name","age");//所有student实例的姓名都为name，年龄是age  
+  
+    var s = new student("captain", 21, "06281097");  
+    s.say();//I am a person  
+    s.display();//undefined-undefined-06281097   
+    //student的name、age没有从参数中获得（两个属性要在person的构造行数中获得，但是prototype的构造函数无参）  
+<script>  
