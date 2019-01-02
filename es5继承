@@ -1,0 +1,37 @@
+<html>  
+<head>  
+<title>call/apply/prototype test</title>  
+</head>  
+<script type="text/javascript">  
+    //person类  
+    function person(name, age) {  
+        this.name = name;  
+        this.age = age;  
+        this.say = function() {  
+            document.write("I am a person");  
+        }  
+        this.display = function() {  
+            document.write(this.name + "-" + this.age);  
+        }  
+    }  
+    //student类，继承自person  
+    function student(name, age, no) {  
+        person.call(this, name, age);//person中的this等于参数中的this，即student中的name和age  
+        this.no = no;  
+        this.display = function() {//覆盖了父类的方法  
+            document.write(this.name + "-" + this.age + "-" + this.no);  
+        }  
+    }  
+  
+    //创建person类  
+    var p = new person("captain", 21);  
+    p.display();//captain-21  
+    p.say();//I am a person  
+    //创建student类  
+    var s = new student("captain", 21, "06281097")  
+    s.display();//captain-21-06281097   
+    s.say();//I am a person 继承了父类的方法  
+<script>  
+<body>  
+</body>  
+</html>  
