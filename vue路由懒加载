@@ -1,0 +1,51 @@
+vue路由懒加载3种方式
+1、
+import Vue from 'vue'
+import Router from 'vue-router'
+
+const home = () => import('@/components/HelloWorld')
+
+Vue.use(Router)
+
+export default new Router({
+  routes: [
+    {
+      path: '/',
+      name: 'HelloWorld',
+      component: home
+    }
+  ]
+})
+
+2、
+import Vue from 'vue'
+import Router from 'vue-router'
+
+Vue.use(Router)
+
+export default new Router({
+  routes: [
+    {
+      path: '/',
+      name: 'HelloWorld',
+      component: resolve => require(['@/components/HelloWorld'],resolve)
+    }
+  ]
+})
+
+3、按需加载（现在使用较多）
+import Vue from 'vue'
+import Router from 'vue-router'
+
+const home = r => require.ensure([], () => r(require('@/components/HelloWorld')), 'demo')
+Vue.use(Router)
+
+export default new Router({
+  routes: [
+    {
+      path: '/',
+      name: 'HelloWorld',
+      component: home
+    }
+  ]
+})
